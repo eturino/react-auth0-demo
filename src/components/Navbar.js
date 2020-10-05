@@ -16,7 +16,21 @@ const Navbar = () => {
         </span>
       </div>
       <div>
-        {!isAuthenticated ? (
+        {isAuthenticated ? (
+          <div className="flex py-1 items-center">
+            <button
+              onClick={() =>
+                logout({
+                  returnTo: window.location.origin,
+                })
+              }
+              className="mx-2 block text-center text-sm font-semibold tracking-wider  text-gray-100 bg-indigo-500 px-4 py-3 rounded hover:bg-indigo-700 focus:shadow-outline focus:outline-none transition-colors duration-300"
+            >
+              Logout
+            </button>
+            <img className="w-10 h-10 rounded-full" alt="" src={picture} />
+          </div>
+        ) : (
           <div className="flex py-1">
             <button
               onClick={() =>
@@ -34,20 +48,6 @@ const Navbar = () => {
             >
               Login
             </button>
-          </div>
-        ) : (
-          <div className="flex py-1 items-center">
-            <button
-              onClick={() =>
-                logout({
-                  returnTo: window.location.origin,
-                })
-              }
-              className="mx-2 block text-center text-sm font-semibold tracking-wider  text-gray-100 bg-indigo-500 px-4 py-3 rounded hover:bg-indigo-700 focus:shadow-outline focus:outline-none transition-colors duration-300"
-            >
-              Logout
-            </button>
-            <img className="w-10 h-10 rounded-full" alt="" src={picture} />
           </div>
         )}
       </div>
